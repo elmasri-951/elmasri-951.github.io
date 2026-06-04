@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Portfolio DERAZ Mohamed</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;600&family=Syne:wght@400;600;700;800&display=swap" rel="stylesheet">
+<style>
+  *{margin:0;padding:0;box-sizing:border-box}
+  :root{
+    --bg:#0a0e1a;--bg2:#0f1526;--bg3:#141c30;
+    --cyan:#00d4ff;--cyan2:#00a8cc;--blue:#1e6fff;
+    --text:#e8eaf6;--text2:#8892b0;--text3:#4a5568;
+    --border:#1e2d4a;--card:#111827;
+    --green:#00ff88;--amber:#ffb800;
+  }
+  html{scroll-behavior:smooth}
+  body{background:var(--bg);color:var(--text);font-family:'Syne',sans-serif;min-height:100vh;overflow-x:hidden}
+
+  nav{position:sticky;top:0;z-index:100;background:rgba(10,14,26,0.95);border-bottom:1px solid var(--border);backdrop-filter:blur(10px);padding:0 2rem}
+  .nav-inner{max-width:1100px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;height:60px}
+  .nav-logo{font-family:'JetBrains Mono',monospace;color:var(--cyan);font-size:14px;font-weight:600;letter-spacing:1px}
+  .nav-links{display:flex;gap:2rem}
+  .nav-links a{color:var(--text2);text-decoration:none;font-size:13px;letter-spacing:1px;text-transform:uppercase;transition:color .2s;cursor:pointer}
+  .nav-links a:hover{color:var(--cyan)}
+
+  .hero{max-width:1100px;margin:0 auto;padding:80px 2rem 60px;display:grid;grid-template-columns:1fr auto;gap:4rem;align-items:center}
+  .hero-tag{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);letter-spacing:2px;text-transform:uppercase;margin-bottom:1rem;display:flex;align-items:center;gap:8px}
+  .hero-tag::before{content:'';width:32px;height:1px;background:var(--cyan)}
+  .hero-name{font-size:clamp(2.5rem,6vw,4.5rem);font-weight:800;line-height:1.1;letter-spacing:-1px;color:var(--text)}
+  .hero-name span{color:var(--cyan)}
+  .hero-sub{font-size:1.1rem;color:var(--text2);margin-top:1rem;line-height:1.7;max-width:480px}
+  .hero-sub strong{color:var(--cyan);font-weight:600}
+  .hero-btns{display:flex;gap:12px;margin-top:2rem;flex-wrap:wrap}
+  .btn{padding:10px 22px;border-radius:6px;font-family:'Syne',sans-serif;font-size:13px;font-weight:600;letter-spacing:1px;text-decoration:none;cursor:pointer;transition:all .2s;border:none;display:inline-flex;align-items:center;gap:8px}
+  .btn-primary{background:var(--cyan);color:#0a0e1a}
+  .btn-primary:hover{background:#00b8e0;transform:translateY(-2px)}
+  .btn-outline{background:transparent;color:var(--text2);border:1px solid var(--border);cursor:not-allowed;opacity:.6}
+  .hero-visual{display:flex;flex-direction:column;gap:8px}
+  .status-card{background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:14px 18px;min-width:200px}
+  .status-dot{width:8px;height:8px;border-radius:50%;background:var(--green);display:inline-block;margin-right:8px;animation:pulse 2s infinite}
+  @keyframes pulse{0%,100%{opacity:1}50%{opacity:.4}}
+  .status-label{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text2)}
+  .status-val{font-size:13px;color:var(--text);margin-top:4px;font-weight:600}
+
+  section{max-width:1100px;margin:0 auto;padding:60px 2rem}
+  .section-header{display:flex;align-items:center;gap:16px;margin-bottom:2.5rem}
+  .section-num{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);letter-spacing:2px}
+  .section-title{font-size:1.6rem;font-weight:700;letter-spacing:-0.5px}
+  .section-line{flex:1;height:1px;background:var(--border)}
+
+  .skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:16px}
+  .skill-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:20px;transition:border-color .2s,transform .2s}
+  .skill-card:hover{border-color:var(--cyan2);transform:translateY(-3px)}
+  .skill-icon{font-size:22px;margin-bottom:12px}
+  .skill-name{font-size:15px;font-weight:700;margin-bottom:4px}
+  .skill-desc{font-size:12px;color:var(--text2);line-height:1.6;margin-bottom:14px}
+  .skill-bar{background:var(--border);border-radius:4px;height:4px;overflow:hidden}
+  .skill-fill{height:100%;border-radius:4px;background:linear-gradient(90deg,var(--cyan),var(--blue));transition:width 1s ease}
+  .skill-level{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--cyan);margin-top:6px}
+
+  .studies-list{display:flex;flex-direction:column;gap:16px}
+  .study-card{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--cyan);border-radius:0 12px 12px 0;padding:20px 24px;display:grid;grid-template-columns:auto 1fr;gap:20px;align-items:start}
+  .study-year{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);white-space:nowrap;padding-top:3px}
+  .study-title{font-size:15px;font-weight:700;margin-bottom:4px}
+  .study-school{font-size:13px;color:var(--text2);margin-bottom:8px}
+  .study-tags{display:flex;gap:6px;flex-wrap:wrap}
+  .tag{background:rgba(0,212,255,0.08);border:1px solid rgba(0,212,255,0.2);color:var(--cyan);font-size:11px;padding:3px 10px;border-radius:4px;font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
+
+  .github-card{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:28px;display:grid;grid-template-columns:1fr auto;gap:24px;align-items:center}
+  .gh-title{font-size:18px;font-weight:700;margin-bottom:6px}
+  .gh-desc{font-size:13px;color:var(--text2);line-height:1.7;margin-bottom:16px}
+  .gh-link{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);text-decoration:none;display:flex;align-items:center;gap:6px}
+  .gh-link:hover{text-decoration:underline}
+  .gh-stats{display:flex;gap:16px;margin-top:20px}
+  .gh-stat-val{font-size:1.5rem;font-weight:800;color:var(--cyan)}
+  .gh-stat-label{font-size:11px;color:var(--text2);font-family:'JetBrains Mono',monospace;letter-spacing:.5px}
+  .gh-logo{opacity:.06;font-size:80px;line-height:1;font-family:'JetBrains Mono',monospace;color:var(--cyan)}
+
+  footer{border-top:1px solid var(--border);padding:30px 2rem;text-align:center;color:var(--text3);font-size:12px;font-family:'JetBrains Mono',monospace;letter-spacing:1px}
+
+  @media(max-width:700px){
+    .hero{grid-template-columns:1fr}.hero-visual{display:none}
+    .github-card{grid-template-columns:1fr}.gh-logo{display:none}
+    .study-card{grid-template-columns:1fr}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="nav-inner">
+    <div class="nav-logo">&gt; portfolio.bts-sio</div>
+    <div class="nav-links">
+      <a onclick="document.getElementById('competences').scrollIntoView({behavior:'smooth'})">Compétences</a>
+      <a onclick="document.getElementById('etudes').scrollIntoView({behavior:'smooth'})">Études</a>
+      <a onclick="document.getElementById('veille').scrollIntoView({behavior:'smooth'})">Veille</a>
+    </div>
+  </div>
+</nav>
+
+<div class="hero">
+  <div>
+    <div class="hero-tag">BTS SIO — Option SISR</div>
+    <h1 class="hero-name">DERAZ <span>Mohamed</span></h1>
+    <p class="hero-sub">Étudiant en <strong>BTS SIO option SISR</strong> — 1ère année.<br>
+    Passionné par les réseaux, la sécurité et l'infrastructure système.</p>
+    <div class="hero-btns">
+      <a href="https://github.com/elmasri-951/veilles-technlogiques" target="_blank" class="btn btn-primary">⌥ GitHub</a>
+      <span class="btn btn-outline" title="Document Excel à venir">📊 Tableau de synthèse — bientôt</span>
+    </div>
+  </div>
+  <div class="hero-visual">
+    <div class="status-card">
+      <div><span class="status-dot"></span><span class="status-label">STATUT</span></div>
+      <div class="status-val">En formation · 1ère année</div>
+    </div>
+    <div class="status-card">
+      <div><span class="status-label" style="color:var(--amber)">● SPÉCIALITÉ</span></div>
+      <div class="status-val">SISR — Réseaux & Systèmes</div>
+    </div>
+    <div class="status-card">
+      <div><span class="status-label" style="color:var(--cyan)">○ FORMATION</span></div>
+      <div class="status-val">BTS SIO · 2 ans</div>
+    </div>
+  </div>
+</div>
+
+<section id="competences">
+  <div class="section-header">
+    <span class="section-num">01.</span>
+    <h2 class="section-title">Compétences techniques</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="skills-grid" id="skillsGrid"></div>
+</section>
+
+<section id="etudes">
+  <div class="section-header">
+    <span class="section-num">02.</span>
+    <h2 class="section-title">Parcours scolaire</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="studies-list">
+    <div class="study-card">
+      <div class="study-year">2024 – 2026</div>
+      <div>
+        <div class="study-title">BTS SIO — Option SISR</div>
+        <div class="study-school">À compléter · Ville</div>
+        <div class="study-tags"><span class="tag">Réseaux</span><span class="tag">Systèmes</span><span class="tag">Cybersécurité</span><span class="tag">Virtualisation</span><span class="tag">Support</span></div>
+      </div>
+    </div>
+    <div class="study-card">
+      <div class="study-year">2021 – 2024</div>
+      <div>
+        <div class="study-title">Baccalauréat Professionnel SN</div>
+        <div class="study-school">Lycée Polyvalent Jean Perrin</div>
+        <div class="study-tags"><span class="tag">Systèmes Numériques</span><span class="tag">Électronique</span><span class="tag">Informatique</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section id="veille">
+  <div class="section-header">
+    <span class="section-num">03.</span>
+    <h2 class="section-title">Veille technologique</h2>
+    <div class="section-line"></div>
+  </div>
+  <div class="github-card">
+    <div>
+      <div class="gh-title">Veilles sur GitHub</div>
+      <p class="gh-desc">Dépôt dédié à ma veille technologique dans le cadre du BTS SIO SISR.<br>Suivi des évolutions en cybersécurité, réseaux, virtualisation et systèmes d'exploitation.</p>
+      <a href="https://github.com/elmasri-951/veilles-technlogiques" target="_blank" class="gh-link">github.com/elmasri-951/veilles-technlogiques ↗</a>
+      <div class="gh-stats">
+        <div class="gh-stat"><div class="gh-stat-val" style="color:var(--amber)">SISR</div><div class="gh-stat-label">option</div></div>
+        <div class="gh-stat"><div class="gh-stat-val" style="color:var(--green)">2026</div><div class="gh-stat-label">promotion</div></div>
+      </div>
+    </div>
+    <div class="gh-logo">{}</div>
+  </div>
+</section>
+
+<footer>
+  &copy; 2025 · DERAZ Mohamed · BTS SIO SISR · <a href="https://github.com/elmasri-951/veilles-technlogiques" style="color:var(--cyan);text-decoration:none">github.com/elmasri-951</a>
+</footer>
+
+<script>
+const skills=[
+  {icon:'🌐',name:'Réseaux & TCP/IP',desc:'Configuration d\'équipements réseau, protocoles IP, routage statique, VLAN, plan d\'adressage.',pct:60,level:'En acquisition'},
+  {icon:'🖥️',name:'Administration systèmes',desc:'Installation et configuration de serveurs Linux (Debian, Ubuntu) et Windows Server.',pct:55,level:'En acquisition'},
+  {icon:'🔒',name:'Cybersécurité',desc:'Sensibilisation aux menaces, pare-feu, politique de mot de passe, bases de la sécurité réseau.',pct:40,level:'Découverte'},
+  {icon:'💾',name:'Virtualisation',desc:'Mise en œuvre de machines virtuelles avec VirtualBox ou VMware. Snapshots, clonage.',pct:50,level:'En acquisition'},
+  {icon:'⌨️',name:'Scripting Bash / PowerShell',desc:'Automatisation de tâches d\'administration, scripts de déploiement et de sauvegarde.',pct:35,level:'Découverte'},
+  {icon:'📋',name:'Documentation technique',desc:'Rédaction de fiches techniques, schémas réseau, procédures d\'installation.',pct:65,level:'En cours'},
+];
+const g=document.getElementById('skillsGrid');
+skills.forEach(s=>{
+  const d=document.createElement('div');d.className='skill-card';
+  d.innerHTML=`<div class="skill-icon">${s.icon}</div><div class="skill-name">${s.name}</div><div class="skill-desc">${s.desc}</div><div class="skill-bar"><div class="skill-fill" style="width:0%" data-w="${s.pct}%"></div></div><div class="skill-level">${s.level} · ${s.pct}%</div>`;
+  g.appendChild(d);
+});
+setTimeout(()=>{document.querySelectorAll('.skill-fill').forEach(b=>b.style.width=b.dataset.w)},300);
+</script>
+</body>
+</html>
